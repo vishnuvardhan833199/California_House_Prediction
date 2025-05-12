@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>California Housing Predictor</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🏡 California Housing Value Predictor</h1>
+        <form method="POST" action="/predict">
+            <div class="input-group">
+                <label for="MedInc">Median Income (in $10,000s)</label>
+                <input type="number" step="any" name="MedInc" required>
+            </div>
+            <div class="input-group">
+                <label for="HouseAge">House Age (in years)</label>
+                <input type="number" step="any" name="HouseAge" required>
+            </div>
+            <div class="input-group">
+                <label for="AveRooms">Average Rooms per Household</label>
+                <input type="number" step="any" name="AveRooms" required>
+            </div>
+            <div class="input-group">
+                <label for="AveBedrms">Average Bedrooms per Household</label>
+                <input type="number" step="any" name="AveBedrms" required>
+            </div>
+            <div class="input-group">
+                <label for="Population">Population in Block</label>
+                <input type="number" step="any" name="Population" required>
+            </div>
+            <div class="input-group">
+                <label for="AveOccup">Average Occupants per Household</label>
+                <input type="number" step="any" name="AveOccup" required>
+            </div>
+            <div class="input-group">
+                <label for="Latitude">Latitude</label>
+                <input type="number" step="any" name="Latitude" required>
+            </div>
+            <div class="input-group">
+                <label for="Longitude">Longitude</label>
+                <input type="number" step="any" name="Longitude" required>
+            </div>
+            <button type="submit">🔍 Predict</button>
+        </form>
+        {% if prediction_text %}
+            <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
